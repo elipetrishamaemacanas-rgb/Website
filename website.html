@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trisha Mae | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5e6ff, #ffffff);
+    color: #3d2b4f;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* NAVBAR */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    z-index: 1000;
+}
+
+header h2 {
+    color: #7b2cbf;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #7b2cbf;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c77dff;
+}
+
+/* SECTIONS */
+section {
+    display: none;
+    height: 100vh;
+    padding: 120px 60px;
+}
+
+section.active {
+    display: block;
+}
+
+/* HOME */
+#home {
+    text-align: center;
+}
+
+.home-text h1 {
+    font-size: 2.5rem;
+}
+
+.home-text span {
+    color: #c77dff;
+}
+
+.home-img {
+    width: 280px;
+    height: 280px;
+    background: url('picture.png.png') center/cover no-repeat;
+    border-radius: 50%;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(123,44,191,0.2);
+}
+
+/* ABOUT */
+#about {
+    height: 100vh;
+}
+
+.about-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.card {
+    background: rgba(255,255,255,0.25);
+    border-radius: 15px;
+    padding: 18px 20px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* HOVER */
+.card {
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 15px rgba(199, 125, 255, 0.6),
+                0 0 30px rgba(123, 44, 191, 0.3),
+                0 15px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(199, 125, 255, 0.5);
+}
+
+.card i {
+    margin-right: 10px;
+    color: #7b2cbf;
+}
+
+/* DIARY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.diary-item {
+    cursor: pointer;
+}
+
+.diary-title {
+    padding: 12px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.diary-title i {
+    margin-right: 8px;
+    color: #7b2cbf;
+}
+
+.diary-title:hover {
+    transform: translateY(-5px);
+    background: #f3e8ff;
+}
+
+/* 🔥 FIX: HIDE DIARY CONTENT */
+.diary-content {
+    display: none;
+}
+
+/* ✅ FIX: Image fits screen without scrolling */
+.diary-content img {
+  /* ✅ IMAGE ON TOP - FIT LIKE YOUR EXAMPLE */
+    width: 100%;
+    max-height: 45vh; /* ✅ controlled height */
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* ✅ TEXT STYLE */
+.diary-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* 🔥 IG STYLE: IMAGE TOP, TEXT BOTTOM */
+#modalText {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#modalText img {
+    order: -1;
+    width: 100%;
+    max-height: 45vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#modalText p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex; /* ✅ NEW */
+    flex-direction: column; /* ✅ NEW */
+    gap: 10px; /* ✅ spacing */
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+    color: #7b2cbf;
+}
+
+/* CONTACT */
+#contact .card {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px){
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>Portfolio</h2>
+    <nav>
+        <a onclick="show('home')">Home</a>
+        <a onclick="show('about')">About</a>
+        <a onclick="show('gallery')">Diary</a>
+        <a onclick="show('contact')">Contact</a>
+    </nav>
+</header>
+
+<section id="home" class="active">
+    <div class="home-text">
+        <h1>Hello, I'm <br><span id="typing"></span></h1>
+    </div>
+    <div class="home-img"></div>
+</section>
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="about-container">
+        <div class="card"><i class="fa-solid fa-user-graduate"></i><p>I am a second-year Information Technology student at CSTA.</p></div>
+        <div class="card"><i class="fa-solid fa-location-dot"></i><p>I am 20 years old and from Novaliches, Quezon City.</p></div>
+        <div class="card"><i class="fa-solid fa-code"></i><p>I am interested in web development and system design.</p></div>
+        <div class="card"><i class="fa-solid fa-magnifying-glass"></i><p>I am curious about how websites and systems work behind the scenes.</p></div>
+        <div class="card"><i class="fa-solid fa-lightbulb"></i><p>I enjoy exploring and discovering new ideas.</p></div>
+        <div class="card"><i class="fa-solid fa-laptop-code"></i><p>I am gaining experience through school projects.</p></div>
+        <div class="card"><i class="fa-solid fa-rocket"></i><p>I am motivated to grow as a developer and continuously improve my skills.</p></div>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2>My College Diary</h2>
+
+    <div class="gallery">
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-calendar"></i> First Year – IT Week
+            </div>
+            <div class="diary-content">
+                <p>
+                During IT Week, our section created a videoke booth for games and entertainment, where I served as one of the heads. Despite limited manpower and challenges, we successfully managed the project. Our efforts paid off when we won Best in Design Booth, making me proud of our team’s achievement.
+                </p>
+                <img src="it week 1.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-film"></i> Short Film Experience
+            </div>
+            <div class="diary-content">
+                <p>
+                We created a short film as a section, which became one of my most unforgettable college experiences. We filmed in the mountains and even hiked and went to a river, making the process tiring but fun. It brought us closer together, and the final output turned out successful, making me proud and happy.
+                </p>
+                <img src="film.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-trophy"></i> Sportfest 2025
+            </div>
+            <div class="diary-content">
+                <p>
+                This was my first sportfest experience, where I joined the parade and watched cheerdance, volleyball, and basketball games. I was especially excited supporting my friends in cheerdance, and the competitions were intense and fun. I felt proud as our department won many awards and championships.
+                </p>
+                <img src="2025.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-gift"></i> Year-End Party 2025
+            </div>
+            <div class="diary-content">
+                <p>
+                This was my first IT Department year-end party with over 100 participants. It was a fun experience, and even though I didn’t win in the raffle, my friends did, which made it more exciting. The highlight was dancing and enjoying the moment with everyone at the end of the program.
+                </p>
+                <img src="year end.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-store"></i> Second Year - IT Week
+            </div>
+            <div class="diary-content">
+                <p>
+                We were assigned to a food booth, where I served as one of the heads in charge of handling money. Despite long working hours and some misunderstandings, We didn’t expect to win, but we did, which made us proud and happy.
+                </p>
+                <img src="it week 2.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-laptop-code"></i> Baby Thesis
+            </div>
+            <div class="diary-content">
+                <p>
+                Our “baby thesis” was one of the most challenging experiences in college. We had limited time and struggled with VB.NET, often submitting late and with incomplete progress. During the defense, our system was still lacking, but it became a valuable lesson for us to start early, be prepared, and be resourceful.
+                </p>
+                <img src="res.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-medal"></i> Sportfest 2026
+            </div>
+            <div class="diary-content">
+                <p>
+                This year’s sportfest was different because winners were announced immediately, but it was still enjoyable. I joined the parade early and watched the cheerdance to support my friends, feeling proud of their performance even if they placed fourth.
+                </p>
+                <img src="2026.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title" onclick="openModal(this)">
+                <i class="fa-solid fa-microscope"></i> Exhibit 2026
+            </div>
+            <div class="diary-content">
+                <p>
+                Our exhibit became a meaningful and valuable experience for all of us. Through this, we were able to develop and strengthen our critical thinking and decision-making skills. Although we encountered several challenges, we managed to overcome them through teamwork and perseverance.
+                </p>
+                <img src="exhibit.jpg">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+
+     <p style="text-align:center; max-width:500px; margin:10px auto 25px; font-size:14px; color:#555;">
+        Feel free to reach out to me through my social media, phone number, or email below. 
+        I am open to opportunities, collaborations, and connections that can help me grow as a future IT professional.
+    </p>
+
+    <div class="card">
+        <p>
+            📘 Facebook: 
+            <a href="https://www.facebook.com/kimtrisha.elipe" target="_blank">
+                My Facebook Profile
+            </a>
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+            📞 Contact Number: 
+            <a href="tel:09949500576">
+                09949500576
+            </a>
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+            ✉️ Email: 
+            <a href="mailto:elipetrishamae4@gmail.com">
+                elipetrishamae4@gmail.com
+            </a>
+        </p>
+    </div>
+</section>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalText"></div>
+    </div>
+</div>
+
+<script>
+function show(id){
+    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+const text = "Trisha Mae Elipe";
+let i = 0;
+
+function typing(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 80);
+    }
+}
+typing();
+
+function openModal(el){
+    let content = el.nextElementSibling.innerHTML;
+    document.getElementById("modalText").innerHTML = content;
+    const modal = document.getElementById("modal");
+    modal.style.display = "flex";
+    setTimeout(() => { modal.classList.add("show"); }, 10);
+}
+
+function closeModal(){
+    const modal = document.getElementById("modal");
+    modal.classList.remove("show");
+    setTimeout(() => { modal.style.display = "none"; }, 300);
+}
+
+window.onclick = function(e){
+    let modal = document.getElementById("modal");
+    if(e.target == modal){
+        closeModal();
+    }
+}
+</script>
+
+</body>
+</html>
