@@ -9,155 +9,218 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{
-    background: linear-gradient(135deg,#f5e6ff,#ffffff);
-    color:#3d2b4f;
-    height:100vh;
-    overflow:hidden;
+body {
+    background: linear-gradient(135deg, #f5e6ff, #ffffff);
+    color: #3d2b4f;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* NAVBAR */
-header{
-    position:fixed;
-    width:100%;
-    top:0;
-    background:rgba(255,255,255,0.6);
-    backdrop-filter:blur(12px);
-    display:flex;
-    justify-content:space-between;
-    padding:15px 50px;
-    z-index:1000;
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    z-index: 1000;
 }
 
-header h2{color:#7b2cbf;}
-
-nav a{
-    margin-left:20px;
-    text-decoration:none;
-    color:#7b2cbf;
-    cursor:pointer;
-    transition:0.3s;
+header h2 {
+    color: #7b2cbf;
 }
-nav a:hover{color:#c77dff;}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #7b2cbf;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c77dff;
+}
 
 /* SECTIONS */
-section{
-    display:none;
-    height:100vh;
-    padding:120px 60px;
+section {
+    display: none;
+    height: 100vh;
+    padding: 120px 60px;
 }
-section.active{display:block;}
+
+section.active {
+    display: block;
+}
 
 /* HOME */
-#home{text-align:center;}
-
-.home-text h1{font-size:2.5rem;}
-.home-text span{color:#c77dff;}
-
-.home-img{
-    width:280px;
-    height:280px;
-    background:url('picture.png.png') center/cover no-repeat;
-    border-radius:50%;
-    margin:20px auto;
-    box-shadow:0 10px 30px rgba(123,44,191,0.2);
+#home {
+    text-align: center;
 }
 
-/* ABOUT & DIARY CONTAINER */
-.about-container{
-    max-height:70vh;
-    overflow-y:auto;
-    padding-right:10px;
+.home-text h1 {
+    font-size: 2.5rem;
 }
 
-/* CARD */
-.card{
-    background:rgba(255,255,255,0.25);
-    border-radius:15px;
-    padding:18px 20px;
-    margin-bottom:15px;
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,0.3);
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
-    cursor:pointer;
+.home-text span {
+    color: #c77dff;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 15px rgba(199,125,255,0.6),
-               0 0 30px rgba(123,44,191,0.3),
-               0 15px 40px rgba(0,0,0,0.15);
+.home-img {
+    width: 280px;
+    height: 280px;
+    background: url('picture.png.png') center/cover no-repeat;
+    border-radius: 50%;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(123,44,191,0.2);
 }
 
-.card i{
-    margin-right:10px;
-    color:#7b2cbf;
+/* ABOUT */
+#about {
+    height: 100vh;
 }
 
-/* HIDE DIARY CONTENT */
-.diary-content{display:none;}
+.about-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.card {
+    background: rgba(255,255,255,0.25);
+    border-radius: 15px;
+    padding: 18px 20px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.card {
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 0 15px rgba(199, 125, 255, 0.6),
+        0 0 30px rgba(123, 44, 191, 0.3),
+        0 15px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(199, 125, 255, 0.5);
+}
+
+.card i {
+    margin-right: 10px;
+    color: #7b2cbf;
+}
+
+/* DIARY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.diary-item {
+    cursor: pointer;
+}
+
+.diary-title {
+    padding: 12px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.diary-title i {
+    margin-right: 8px;
+    color: #7b2cbf;
+}
+
+.diary-title:hover {
+    transform: translateY(-5px);
+    background: #f3e8ff;
+}
+
+/* HIDE CONTENT */
+.diary-content {
+    display: none;
+}
+
+/* IMAGE */
+.diary-content img {
+    width: 100%;
+    max-height: 45vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* TEXT */
+.diary-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
 
 /* MODAL */
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.35);
-    backdrop-filter:blur(8px);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:2000;
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
 }
 
-.modal-content{
-    background:white;
-    width:80%;
-    max-width:500px;
-    border-radius:18px;
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+.modal-content {
+    background: white;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.close{
-    font-size:22px;
-    cursor:pointer;
-    color:#7b2cbf;
-    text-align:right;
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
 }
 
-/* IMAGE + TEXT */
-#modalText img{
-    width:100%;
-    max-height:45vh;
-    object-fit:contain;
-    border-radius:10px;
-}
-
-#modalText p{
-    font-size:14px;
-    line-height:1.5;
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+    color: #7b2cbf;
 }
 
 /* CONTACT */
-#contact .card{
-    max-width:400px;
-    margin:auto;
-    text-align:center;
+#contact .card {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
 }
 
 /* RESPONSIVE */
-@media(max-width:900px){
-    section{padding:120px 20px;}
+@media(max-width: 900px){
+    .gallery {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
@@ -169,12 +232,11 @@ section.active{display:block;}
     <nav>
         <a onclick="show('home')">Home</a>
         <a onclick="show('about')">About</a>
-        <a onclick="show('diary')">Diary</a>
+        <a onclick="show('gallery')">Diary</a>
         <a onclick="show('contact')">Contact</a>
     </nav>
 </header>
 
-<!-- HOME -->
 <section id="home" class="active">
     <div class="home-text">
         <h1>Hello, I'm <br><span id="typing"></span></h1>
@@ -182,68 +244,111 @@ section.active{display:block;}
     <div class="home-img"></div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
     <h2>About Me</h2>
     <div class="about-container">
-        <div class="card"><i class="fa-solid fa-user-graduate"></i> I am a second-year IT student.</div>
-        <div class="card"><i class="fa-solid fa-location-dot"></i> From Quezon City.</div>
-        <div class="card"><i class="fa-solid fa-code"></i> Interested in web development.</div>
-        <div class="card"><i class="fa-solid fa-lightbulb"></i> Loves learning new ideas.</div>
+        <div class="card"><i class="fa-solid fa-user-graduate"></i><p>I am a second-year Information Technology student at CSTA.</p></div>
+        <div class="card"><i class="fa-solid fa-location-dot"></i><p>I am 20 years old and from Novaliches, Quezon City.</p></div>
+        <div class="card"><i class="fa-solid fa-code"></i><p>I am interested in web development and system design.</p></div>
+        <div class="card"><i class="fa-solid fa-magnifying-glass"></i><p>I am curious about how websites and systems work behind the scenes.</p></div>
+        <div class="card"><i class="fa-solid fa-lightbulb"></i><p>I enjoy exploring and discovering new ideas.</p></div>
+        <div class="card"><i class="fa-solid fa-laptop-code"></i><p>I am gaining experience through school projects.</p></div>
+        <div class="card"><i class="fa-solid fa-rocket"></i><p>I am motivated to grow as a developer and continuously improve my skills.</p></div>
     </div>
 </section>
 
-<!-- DIARY -->
-<section id="diary">
+<section id="gallery">
     <h2>My College Diary</h2>
 
-    <div class="about-container">
+    <div class="gallery">
 
-        <div class="card" onclick="openModal(this)">
-            <h4><i class="fa-solid fa-calendar"></i> First Year – IT Week</h4>
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-calendar-days"></i> First Year – IT Week</div>
             <div class="diary-content">
-                <p>We created a videoke booth and won Best Design Booth.</p>
+                <p>During IT Week...</p>
                 <img src="it week 1.jfif">
             </div>
         </div>
 
-        <div class="card" onclick="openModal(this)">
-            <h4><i class="fa-solid fa-film"></i> Short Film</h4>
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-film"></i> Short Film Experience</div>
             <div class="diary-content">
-                <p>Filming in the mountains was tiring but fun.</p>
+                <p>We created a short film...</p>
                 <img src="film.jfif">
             </div>
         </div>
 
-        <div class="card" onclick="openModal(this)">
-            <h4><i class="fa-solid fa-trophy"></i> Sportfest</h4>
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-trophy"></i> Sportfest 2025</div>
             <div class="diary-content">
-                <p>My first sportfest experience full of excitement.</p>
+                <p>This was my first sportfest...</p>
                 <img src="2025.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-gift"></i> Year-End Party 2025</div>
+            <div class="diary-content">
+                <p>Year-end party experience...</p>
+                <img src="year end.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-utensils"></i> Second Year - IT Week</div>
+            <div class="diary-content">
+                <p>Food booth experience...</p>
+                <img src="it week 2.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-book"></i> Baby Thesis</div>
+            <div class="diary-content">
+                <p>Baby thesis experience...</p>
+                <img src="res.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-medal"></i> Sportfest 2026</div>
+            <div class="diary-content">
+                <p>Sportfest 2026...</p>
+                <img src="2026.jfif">
+            </div>
+        </div>
+
+        <div class="diary-item">
+            <div class="diary-title"><i class="fa-solid fa-display"></i> Exhibit 2026</div>
+            <div class="diary-content">
+                <p>Exhibit experience...</p>
+                <img src="exhibit.jpg">
             </div>
         </div>
 
     </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
     <h2>Contact</h2>
 
+    <p style="text-align:center; max-width:500px; margin:10px auto 25px; font-size:14px; color:#555;">
+        Feel free to reach out...
+    </p>
+
     <div class="card">
-        📘 <a href="https://facebook.com" target="_blank">Facebook</a>
+        <p>📘 Facebook: <a href="#">Profile</a></p>
     </div>
 
     <div class="card">
-        📞 <a href="tel:09949500576">09949500576</a>
+        <p>📞 Contact Number: <a href="tel:09949500576">09949500576</a></p>
     </div>
 
     <div class="card">
-        ✉️ <a href="mailto:email@gmail.com">email@gmail.com</a>
+        <p>✉️ Email: <a href="mailto:elipetrishamae4@gmail.com">Email Me</a></p>
     </div>
 </section>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -257,33 +362,25 @@ function show(id){
     document.getElementById(id).classList.add("active");
 }
 
-const text="Trisha Mae Elipe";
-let i=0;
+const text = "Trisha Mae Elipe";
+let i = 0;
+
 function typing(){
-    if(i<text.length){
-        document.getElementById("typing").innerHTML+=text.charAt(i);
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typing,80);
+        setTimeout(typing, 80);
     }
 }
 typing();
 
 function openModal(el){
-    let content=el.querySelector(".diary-content").innerHTML;
-    document.getElementById("modalText").innerHTML=content;
-    let modal=document.getElementById("modal");
-    modal.style.display="flex";
+    document.getElementById("modalText").innerHTML = el.nextElementSibling.innerHTML;
+    document.getElementById("modal").style.display = "flex";
 }
 
 function closeModal(){
-    document.getElementById("modal").style.display="none";
-}
-
-window.onclick=function(e){
-    let modal=document.getElementById("modal");
-    if(e.target==modal){
-        closeModal();
-    }
+    document.getElementById("modal").style.display = "none";
 }
 </script>
 
