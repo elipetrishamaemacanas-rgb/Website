@@ -59,13 +59,14 @@ section {
     padding: 120px 60px;
 }
 
-#gallery::-webkit-scrollbar {
-    width: 6px;
+#gallery {
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 100px;
 }
 
-#gallery::-webkit-scrollbar-thumb {
-    background: rgba(123, 44, 191, 0.4);
-    border-radius: 10px;
+#gallery {
+    -webkit-overflow-scrolling: touch;
 }
 
 section.active {
