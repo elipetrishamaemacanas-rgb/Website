@@ -154,6 +154,29 @@ section.active {
     background: #f3e8ff;
 }
 
+.diary-item {
+    transition: 0.3s ease;
+    border-radius: 12px;
+}
+
+.diary-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+        0 0 15px rgba(199, 125, 255, 0.6),
+        0 0 30px rgba(123, 44, 191, 0.4),
+        0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* extra glow sa title */
+.diary-title {
+    transition: 0.3s ease;
+}
+
+.diary-item:hover .diary-title {
+    background: #f3e8ff;
+    box-shadow: 0 0 12px rgba(199, 125, 255, 0.5);
+}
+
 /* HIDE CONTENT */
 .diary-content {
     display: none;
@@ -165,6 +188,28 @@ section.active {
     max-height: 45vh;
     object-fit: contain;
     border-radius: 10px;
+}
+
+#modalText {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#modalText img {
+    order: -1;
+    width: 100%;
+    max-height: 45vh;
+    object-fit: contain;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+}
+
+#modalText p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
 }
 
 /* TEXT */
@@ -197,11 +242,6 @@ section.active {
     gap: 10px;
 }
 
-.modal.show .modal-content {
-    transform: scale(1);
-    opacity: 1;
-}
-
 .close {
     float: right;
     font-size: 22px;
@@ -214,6 +254,14 @@ section.active {
     max-width: 400px;
     margin: auto;
     text-align: center;
+}
+
+.diary-title img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
 
 /* RESPONSIVE */
@@ -246,13 +294,20 @@ section.active {
 
 <section id="about">
     <h2>About Me</h2>
+
     <div class="about-container">
         <div class="card"><i class="fa-solid fa-user-graduate"></i><p>I am a second-year Information Technology student at CSTA.</p></div>
+
         <div class="card"><i class="fa-solid fa-location-dot"></i><p>I am 20 years old and from Novaliches, Quezon City.</p></div>
+
         <div class="card"><i class="fa-solid fa-code"></i><p>I am interested in web development and system design.</p></div>
+
         <div class="card"><i class="fa-solid fa-magnifying-glass"></i><p>I am curious about how websites and systems work behind the scenes.</p></div>
+
         <div class="card"><i class="fa-solid fa-lightbulb"></i><p>I enjoy exploring and discovering new ideas.</p></div>
+
         <div class="card"><i class="fa-solid fa-laptop-code"></i><p>I am gaining experience through school projects.</p></div>
+
         <div class="card"><i class="fa-solid fa-rocket"></i><p>I am motivated to grow as a developer and continuously improve my skills.</p></div>
     </div>
 </section>
@@ -263,65 +318,97 @@ section.active {
     <div class="gallery">
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-calendar-days"></i> First Year – IT Week</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="it week 1.jfif">
+                <i class="fa-solid fa-calendar-days"></i> First Year – IT Week
+            </div>
+
             <div class="diary-content">
-                <p>During IT Week...</p>
+                <p>During IT Week, our section created a videoke booth for games and entertainment, where I served as one of the heads. Despite limited manpower and challenges, we successfully managed the project. Our efforts paid off when we won Best in Design Booth, making me proud of our team’s achievement.</p>
                 <img src="it week 1.jfif">
             </div>
         </div>
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-film"></i> Short Film Experience</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="film.jfif">
+                <i class="fa-solid fa-film"></i> Short Film Experience
+            </div>
+
             <div class="diary-content">
-                <p>We created a short film...</p>
+                <p>We created a short film as a section, which became one of my most unforgettable college experiences. We filmed in the mountains and even hiked and went to a river, making the process tiring but fun. It brought us closer together, and the final output turned out successful, making me proud and happy.</p>
                 <img src="film.jfif">
             </div>
         </div>
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-trophy"></i> Sportfest 2025</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="2025.jfif">
+                <i class="fa-solid fa-trophy"></i> Sportfest 2025
+            </div>
+
             <div class="diary-content">
-                <p>This was my first sportfest...</p>
+                <p>This was my first sportfest experience, where I joined the parade and watched cheerdance, volleyball, and basketball games. I was especially excited supporting my friends in cheerdance, and the competitions were intense and fun. I felt proud as our department won many awards and championships.</p>
                 <img src="2025.jfif">
             </div>
         </div>
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-gift"></i> Year-End Party 2025</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="year end.jfif">
+                <i class="fa-solid fa-gift"></i> Year-End Party 2025
+            </div>
+
             <div class="diary-content">
-                <p>Year-end party experience...</p>
+                <p>This was my first IT Department year-end party with over 100 participants. It was a fun experience, and even though I didn’t win in the raffle, my friends did, which made it more exciting. The highlight was dancing and enjoying the moment with everyone at the end of the program.</p>
                 <img src="year end.jfif">
             </div>
         </div>
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-utensils"></i> Second Year - IT Week</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="it week 2.jfif">
+                <i class="fa-solid fa-utensils"></i> Second Year - IT Week
+            </div>
+
             <div class="diary-content">
-                <p>Food booth experience...</p>
+                <p>We were assigned to a food booth, where I served as one of the heads in charge of handling money. Despite long working hours and some misunderstandings, We didn’t expect to win, but we did, which made us proud and happy.</p>
                 <img src="it week 2.jfif">
             </div>
         </div>
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-book"></i> Baby Thesis</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="res.jfif">
+                <i class="fa-solid fa-book"></i> Baby Thesis
+            </div>
+
             <div class="diary-content">
-                <p>Baby thesis experience...</p>
+                <p>Our “baby thesis” was one of the most challenging experiences in college. We had limited time and struggled with VB.NET, often submitting late and with incomplete progress. During the defense, our system was still lacking, but it became a valuable lesson for us to start early, be prepared, and be resourceful. It also taught me the importance of communication and teamwork, especially since many groups in our section faced difficulties.</p>
                 <img src="res.jfif">
             </div>
         </div>
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-medal"></i> Sportfest 2026</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="2026.jfif">
+                <i class="fa-solid fa-medal"></i> Sportfest 2026
+            </div>
+
             <div class="diary-content">
-                <p>Sportfest 2026...</p>
+                <p>This year’s sportfest was different because winners were announced immediately, but it was still enjoyable. I joined the parade early and watched the cheerdance to support my friends, feeling proud of their performance even if they placed fourth. I also enjoyed the intense volleyball games and briefly forgot about schoolwork. Overall, I was proud as our IT department achieved many wins and placements.</p>
                 <img src="2026.jfif">
             </div>
         </div>
 
         <div class="diary-item">
-            <div class="diary-title"><i class="fa-solid fa-display"></i> Exhibit 2026</div>
+            <div class="diary-title" onclick="openModal(this)">
+                <img src="exhibit.jpg">
+                <i class="fa-solid fa-display"></i> Exhibit 2026
+            </div>
+
             <div class="diary-content">
-                <p>Exhibit experience...</p>
+                <p>This experience was very meaningful for us as IT students because it helped sharpen our critical thinking and decision-making skills. Even though we faced many challenges during the preparation, we were still able to successfully present our project at the exhibit. Through this experience, we also learned the importance of teamwork, communication, and perseverance. It gave us confidence in applying our knowledge and skills in a real-world setting, making the entire journey both memorable and rewarding.</p>
                 <img src="exhibit.jpg">
             </div>
         </div>
@@ -333,7 +420,8 @@ section.active {
     <h2>Contact</h2>
 
     <p style="text-align:center; max-width:500px; margin:10px auto 25px; font-size:14px; color:#555;">
-        Feel free to reach out...
+        Get in touch with me for inquiries, collaborations, or opportunities. 
+    I am always open to learning, connecting with others, and growing in the field of Information Technology.
     </p>
 
     <div class="card">
@@ -381,6 +469,14 @@ function openModal(el){
 
 function closeModal(){
     document.getElementById("modal").style.display = "none";
+}
+
+window.onclick = function(e){
+    let modal = document.getElementById("modal");
+
+    if(e.target == modal){
+        closeModal();
+    }
 }
 </script>
 
